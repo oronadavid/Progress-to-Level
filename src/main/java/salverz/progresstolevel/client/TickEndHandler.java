@@ -21,23 +21,22 @@ public class TickEndHandler implements ClientTickEvents.EndTick {
         long time = client.world.getTime();
         if (endTime > time) {
             if (endTime - time >= DISPLAY_TIME) {
-                XPOverlay.color += color_change;
+                XPOverlay.changeColor(color_change);
             } else if (endTime - time <= FADE_TIME) {
-                XPOverlay.color -= color_change;
+                XPOverlay.changeColor(-color_change);
             }
         }
 
         currentXp = XPCalculations.getCurrentXp();
-        if (currentXp != lastXp) {
-            System.out.println("xp updated");
+        if (currentXp != lastXp && !client.player.isCreative()) {
+            XPOverlay.setPercent(XPCalculations.getPercent());
             if (endTime > client.world.getTime()) {
                 endTime = client.world.getTime() + DISPLAY_TIME;
-                XPOverlay.color = 0xFF55FF55;
+                XPOverlay.setColor(0xFF55FF55);
             } else {
                 endTime = client.world.getTime() + DISPLAY_TIME + FADE_TIME;
-                XPOverlay.color = 0x0455FF55;
+                XPOverlay.setColor(0x0455FF55);
             }
-
         }
         lastXp = XPCalculations.getCurrentXp();
     }

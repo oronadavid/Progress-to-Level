@@ -5,7 +5,11 @@ import net.minecraft.client.MinecraftClient;
 public class XPCalculations {
    static MinecraftClient client = MinecraftClient.getInstance();
 
-    protected static int getCurrentXp() {
+   public static String getPercent() {
+       double percent = Math.round((1.0 * getCurrentXp() / 1395) * 10000) / 100.0;
+       return percent + "%";
+   }
+    public static int getCurrentXp() {
         int xpLevel = client.player.experienceLevel;
         int totalLevelXp = totalExperienceAtLevel(xpLevel - 1);
         float xpProgress = client.player.experienceProgress;
