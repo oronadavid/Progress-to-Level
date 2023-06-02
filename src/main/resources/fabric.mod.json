@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "progress-to-level",
+	"version": "${version}",
+	"name": "Progress To Level",
+	"description": "Shows your progress to level 30",
+	"authors": [
+		"Salverz"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/example-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"salverz.progresstolevel.ProgressToLevel"
+		],
+		"client": [
+			"salverz.progresstolevel.ProgressToLevelClient"
+		],
+		"fabric-datagen": [
+			"salverz.progresstolevel.ProgressToLevelDataGenerator"
+		]
+	},
+	"mixins": [
+		"progress-to-level.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.19.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
